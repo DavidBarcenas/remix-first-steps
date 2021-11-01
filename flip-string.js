@@ -5,41 +5,24 @@
 
 function main(input) {
   if (typeof input !== 'string' || input.trim() === '') {
-    throw new Error('The input parameter has to be a string.')
+    throw new Error('The input parameter must be a string and cannot be empty.')
   }
 
   const word = input.trim()
+  const convertWordToArray = word.split('')
+  const flipWord = word.replace(/\W/g, '').split('').reverse()
 
-  const symbolArray = getSymbols(word)
-  const flipString = addSymbolsToYourPosition(word, symbolArray)
+  const symbols = [',', '$', '!']
 
-  return flipString
-}
+  for (let i = 0; i <= convertWordToArray.length; i++) {
+    let character = convertWordToArray[i]
 
-function getSymbols(word) {
-  const convertStringToArray = word.split('')
-
-  const symbolDictionary = [',', '$', '!']
-  const symbolPosition = []
-
-  for (let i = 0; i <= convertStringToArray.length; i++) {
-    if (symbolDictionary.includes(convertStringToArray[i])) {
-      symbolPosition.push([i, convertStringToArray[i]])
+    if (symbols.includes(character)) {
+      flipWord.splice(i, 0, character)
     }
   }
 
-  return symbolPosition
-}
-
-function addSymbolsToYourPosition(word, symbols) {
-  const clearString = word.replace(/\W/g, '')
-  const flipString = clearString.split('').reverse()
-
-  for ([key, value] of symbols) {
-    flipString.splice(key, 0, value)
-  }
-
-  return flipString.join('')
+  return flipWord.join('')
 }
 
 
