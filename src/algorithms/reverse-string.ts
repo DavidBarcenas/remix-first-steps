@@ -3,7 +3,7 @@
   Only subsequence "abc" is reversed
 */
 
-export function main(input: string) {
+export function reverse(input: string) {
   if (typeof input !== 'string' || input.trim() === '') {
     throw new Error('The input parameter must be a string and cannot be empty.');
   }
@@ -15,13 +15,13 @@ export function main(input: string) {
 
   const word = input.trim();
   const convertWordToArray = word.split('');
-  const flipWord = word.replace(regex, '').split('').reverse();
+  const reverseWord = word.replace(regex, '').split('').reverse();
 
   convertWordToArray.map((char, i): void => {
     if (symbols.includes(char)) {
-      flipWord.splice(i, deleteCount, char);
+      reverseWord.splice(i, deleteCount, char);
     }
   });
 
-  return flipWord.join('');
+  return reverseWord.join('');
 }
