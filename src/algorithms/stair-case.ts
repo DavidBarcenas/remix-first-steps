@@ -1,7 +1,7 @@
-const MIN_NUMBER = 0
-const INITIAL_VALUE = 1
+const MIN_NUMBER = 0;
+const INITIAL_VALUE = 1;
 
-let str = '\n'
+let str = '\n';
 
 export function stairCase(n: number): string {
   if (typeof n !== 'number' || n < MIN_NUMBER) {
@@ -9,11 +9,10 @@ export function stairCase(n: number): string {
   }
 
   for (let i = INITIAL_VALUE; i <= n; i++) {
-      for (let k = INITIAL_VALUE; k <= n; k++) {
-          str += k > (n - i) ? '#' : ' '
-      }
-      str += '\n'
+    for (let k = INITIAL_VALUE; k <= n; k++) {
+      str += k > n - i ? '#' : ' ';
     }
-    return str
+    str += '\n';
+  }
+  return str;
 }
-
