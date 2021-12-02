@@ -13,11 +13,9 @@ export function reverse(input: string) {
   const regex = /[$!,]/g;
   const deleteCount = 0;
 
-  const word = input.trim();
-  const convertWordToArray = word.split('');
-  const reverseWord = word.replace(regex, '').split('').reverse();
+  const reverseWord = input.replace(regex, '').split('').reverse();
 
-  convertWordToArray.map((char, i): void => {
+  input.split('').map((char, i): void => {
     if (symbols.includes(char)) {
       reverseWord.splice(i, deleteCount, char);
     }
